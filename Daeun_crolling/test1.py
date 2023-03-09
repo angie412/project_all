@@ -1,2 +1,2 @@
-print("hello ")
-print("aaadsdadsa")
+print("eddddd")
+print("sdsfdfewere")

@@ -1,2 +1,2 @@
-print("tlqkftlqkf")
-print("tlqkftlvkf")
+print("hihihihihi")
+print("i need alchol")
