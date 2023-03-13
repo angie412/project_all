@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import sys    
 import os     
@@ -127,3 +128,13 @@ df
 df.info()
 
 df.to_excel('crawler_naver 부동산.xlsx')
+=======
+<<<<<<< HEAD
+print("eddddd")
+print("sdsfdfewere")
+=======
+print("hello ")
+print("aaadsdadsa")
+print("andwhfwadwafsefa")
+>>>>>>> 9a727eb383e784f57be241e5d9df9e3c9fd33187
+>>>>>>> 5c1df4c637265b977d36367177e22fbea3782d83
