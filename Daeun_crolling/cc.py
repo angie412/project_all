@@ -1,42 +1,41 @@
+import sys    # 시스템
+import os     # 시스템
 
-import sys    
-import os     
-import pandas as pd    
-import numpy as np    
+import pandas as pd    # 판다스 : 데이터분석 라이브러리
+import numpy as np     # 넘파이 : 숫자, 행렬 데이터 라이브러리
 
-from bs4 import BeautifulSoup     
-from selenium import webdriver
-import time                      
-from tqdm import tqdm_notebook    
-from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup     # html 데이터 전처리
+from selenium import webdriver    # 웹 브라우저 자동화
+import time                       # 시간 지연
+from tqdm import tqdm_notebook    # 진행상황 표시
 
-address_list = []
-text_list = [] 
-deal_list = [] 
-won_list = [] 
-kind_list = [] 
-area_list = [] 
+address_list = [] #주소
+text_list = [] # 대
+deal_list = [] # 거래 방식
+won_list = [] # 가격
+kind_list = [] # 토지
+area_list = [] # 면적
 
-path = "C:/Users/USER/Desktop/chromedriver_win32/chromedriver.exe"
-driver = webdriver.Chrome(path)
+### step 1. 부동산 크롤링
+# 크롬 웹브라우저 실행
+driver = webdriver.Chrome(r"C:\Users\USER\Desktop\chromedriver_win32\chromedriver.exe")
 
-driver.get("https://new.land.naver.com/offices?ms=37.564423,127.1488659,12&a=SG:SMS:GJCG:APTHGJ:GM:TJ&e=RETAIL")
+# 사이트 주소
+driver.get("https://new.land.naver.com/offices?ms=36.3615444,127.3784552,14&a=SG:SMS:GJCG:APTHGJ:GM:TJ&e=RETAIL")
 time.sleep(2)
 
-first_path = r'/html/body/div[4]/div[3]/div[2]/div/div[1]/div[1]/ul/div[1]/li[4]/a'
-driver.find_element(By.XPATH, first_path).click()
-# //*[@id="type0"]
-#/html/body/div[2]/div/section/div[1]/div/button[1]
-#time.sleep(1)
+# 토지 클릭
+driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/a[4]/span/em[4]").click()
+time.sleep(1)
 
-#driver.find_element_by_css_selector(".filter_btn_select").click()
-#driver.find_element_by_xpath("/html/body/div[2]/div/section/div[1]/div/div[1]/div/div[1]/div/ul/li[2]/label").click()
+driver.find_element_by_css_selector(".filter_btn_select").click()
+driver.find_element_by_xpath("/html/body/div[2]/div/section/div[1]/div/div[1]/div/div[1]/div/ul/li[2]/label").click()
+driver.find_element_by_css_selector(".btn_close").click()
 
-
-#driver.find_element_by_css_selector(".btn_close").click()
-#driver.find_element_by_css_selector("#type0").click()
-#driver.find_element_by_css_selector("#type1").click()
-#driver.find_element_by_css_selector("#type2").click()
+# 상가, 사무실, 공장/창고, 지식산업센터, 건물 클릭으로 해제
+driver.find_element_by_css_selector("#type0").click()
+driver.find_element_by_css_selector("#type1").click()
+driver.find_element_by_css_selector("#type2").click()
 driver.find_element_by_css_selector("#type3").click()
 driver.find_element_by_css_selector("#type4").click()
 time.sleep(1)
